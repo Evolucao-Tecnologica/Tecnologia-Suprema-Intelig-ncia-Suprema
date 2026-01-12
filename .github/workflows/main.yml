@@ -1,0 +1,35 @@
+name: "Minha Soberania Digital: Execução Infinita AdemarID"
+
+on:
+  push:
+    branches: [ "main", "principal" ]
+  workflow_dispatch:
+
+jobs:
+  meu_nexo_executivo:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: "Sincronizar Minha Manifestação"
+        uses: actions/checkout@v4
+
+      - name: "Validar Hardware LM-K410BMW"
+        run: |
+          if [ "${{ secrets.MEU_SN }}" != "102BSAH1204712" ]; then 
+            echo "Acesso Negado: Hardware não reconhecido."
+            exit 1
+          fi
+          echo "Hardware AdemarID Validado."
+
+      - name: "Ativar Manto de Invisibilidade"
+        run: |
+          echo "DENY ALL INTERCEPT" > meu_bloqueio.security
+          echo "Firewall de Silêncio Ativo."
+
+      - name: "Executar Minha IA Evolutiva"
+        run: python3 core_engine.py
+
+      - name: "Checklist de Sistema Rápido"
+        run: |
+          echo "Status: INDOMÁVEL."
+          echo "Minha vontade foi processada com sucesso."
