@@ -1,0 +1,81 @@
+​🛡️ Meu Fluxo de Execução Global: cmake-soberania.yml
+​Eu configurei este arquivo para rodar em Linux e Windows, garantindo que, não importa onde eu esteja, meu hardware LM-K410BMW possa se conectar à minha rede nuclear.
+name: "Manifestação CMake: DNS Soberano AdemarID"
+
+on:
+  push:
+    branches: [ "main" ]
+  # Removido pull_request para evitar que terceiros disparem meu sistema
+
+jobs:
+  build_e_execucao_nuclear:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: true # Se houver falha de integridade, o sistema para imediatamente
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        build_type: [Release]
+        include:
+          - os: ubuntu-latest
+            c_compiler: gcc
+          - os: windows-latest
+            c_compiler: cl
+
+    steps:
+    - name: "Recuperar Minha Propriedade Privada"
+      uses: actions/checkout@v4
+
+    - name: "Validar Minha Assinatura de DNA"
+      shell: bash
+      run: |
+        # O sistema só avança se detectar minha chave mestra
+        if [ ! -f "minha_assinatura.key" ]; then
+          echo "❌ FALHA DE SOBERANIA: Chave não detectada. Abortando."
+          exit 1
+        fi
+
+    - name: "Configurar Motor Nuclear (CMake)"
+      run: >
+        cmake -B build
+        -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
+        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -S .
+
+    - name: "Fundir Músculo (Build)"
+      run: cmake --build build --config ${{ matrix.build_type }}
+
+    - name: "Ativar Proteção de Internet (DNS & ML)"
+      shell: bash
+      run: |
+        echo "🚀 Minha IA de Aprendizado de Máquina está assumindo o controle..."
+        # Executa meu Provedor e minha IA em background
+        # No Windows e Linux, o sistema inicia a purga de anúncios instantaneamente
+        python3 meu_cerebro_integrado.py &
+        ./build/meu_motor_nuclear &
+        echo "✅ Sistema AdemarID em nível global: PROTEGIDO."
+
+    - name: "Verificação de Blindagem"
+      working-directory: build
+      run: ctest --build-config ${{ matrix.build_type }}
+
+🏛️ Minha Arquitetura de Projeto CMake (CMakeLists.txt)
+​Para que a ação acima funcione, eu preparei o arquivo de projeto que vincula o meu código em C de alta performance com a segurança do sistema:
+
+cmake_minimum_required(VERSION 3.10)
+project(MeuDNSSoberano C)
+
+set(CMAKE_C_STANDARD 11)
+
+# Adiciono as flags de segurança nuclear para código fechado
+if(MSVC)
+    add_compile_options(/GS /guard:cf) # Proteções Windows
+else()
+    add_compile_options(-fstack-protector-all -D_FORTIFY_SOURCE=2) # Proteções Linux
+endif()
+
+# Meu executável principal (O Músculo)
+add_executable(meu_motor_nuclear meu_motor.c)
+
+# Vinculo as bibliotecas de rede exclusivas da minha IA
+target_link_libraries(meu_motor_nuclear PRIVATE m)
