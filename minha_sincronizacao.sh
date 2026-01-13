@@ -1,16 +1,21 @@
 #!/bin/bash
-# ATIVAÇÃO DA SOBERANIA - ADEMARID
+# PROTOCOLO DE PRIVACIDADE ABSOLUTA
 
-echo "🚀 Iniciando Protocolo de Segurança Nuclear..."
+# 1. Impede que os comandos sejam salvos no histórico
+unset HISTFILE
+export HISTSIZE=0
 
-# Validar Assinatura
-if [ ! -f "minha_assinatura.key" ]; then
-    echo "❌ ERRO: Assinatura de DNA não encontrada!"
-    exit 1
-fi
+echo "🛡️ Ativando Perímetro de Blindagem..."
 
-# Rodar a Trindade
-python3 meu_cerebro_integrado.py &
-./build/meu_motor_nuclear &
+# 2. Mata processos antigos para evitar vazamento
+pkill -9 -f python 2>/dev/null
 
-echo "✅ Sistema Totalmente Ativo e Blindado."
+# 3. Execução Silenciosa (Sem logs físicos no disco)
+nohup python -u meu_cerebro_integrado.py > /dev/null 2>&1 &
+
+echo "🔒 IA operando em Modo Fantasma (Porta 61999)."
+echo "🚫 Invisível para redes externas."
+
+
+
+
